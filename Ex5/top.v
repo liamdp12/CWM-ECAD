@@ -17,8 +17,8 @@ module aircon (
     input wire clk,
     input wire [4:0] temperature,
     output wire heating,
-    output wire cooling,
-)
+    output wire cooling
+);
 
 // variable to hold state. 1st bit controls heating, 2nd bit controls cooling
 reg [1:0] state;
