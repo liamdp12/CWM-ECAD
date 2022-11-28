@@ -18,7 +18,17 @@ puts "Creating Project"
 create_fileset -constrset -quiet constraints
 
 #Todo: Add your IP here
+create_ip -name blk_mem_gen -vendor xilinx.com -library ip -version 8.4 -module_name blk_mem_gen_0
+set_property -dict [list \
+    CONFIG.Coe_File {/home/liam/CWM-ECAD/Ex7/mem.coe} \
+    CONFIG.Load_Init_File {true} \
+    CONFIG.Memory_Type {Single_Port_Rom} \
+    CONFIG.Write_Depth_A {8} \
+    CONFIG.Write_Width_A {24} \
+] [get_ips blk_mem_gen_0]
 
+read_verilog "lights.v"
+read_verilog "multiplexer.v"
 read_verilog "top.v"
 read_verilog "top_tb.v"
 
