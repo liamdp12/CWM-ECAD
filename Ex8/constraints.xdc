@@ -17,5 +17,30 @@ set_property BITSTREAM.CONFIG.SPI_FALL_EDGE YES        [current_design]
 #############################################################################################################
 
 
+create_clock -period 100 -name Clk [get_ports clk_p]
 
+set_clock_groups -asynchronous -group [get_clocks Clk -include_generated_clocks]
 
+set_property PACKAGE_PIN AY38 [get_ports {clk_n}]
+set_property PACKAGE_PIN AY37 [get_ports {clk_p}]
+set_property PACKAGE_PIN BD21 [get_ports {rst_n}]
+set_property PACKAGE_PIN AU22 [get_ports {heating}]
+set_property PACKAGE_PIN AT22 [get_ports {cooling}]
+set_property PACKAGE_PIN BC21 [get_ports {temperature[0]}]
+set_property PACKAGE_PIN BB21 [get_ports {temperature[1]}]
+set_property PACKAGE_PIN BA20 [get_ports {temperature[2]}]
+set_property PACKAGE_PIN AL20 [get_ports {temperature[3]}]
+set_property PACKAGE_PIN AT20 [get_ports {temperature[4]}]
+
+set_property IOSTANDARD DIFF_SSTL12 [get_ports {clk_p}]
+set_property IOSTANDARD DIFF_SSTL12 [get_ports {clk_n}]
+set_property IOSTANDARD LVCMOS18 [get_ports {rst_n}]
+set_property IOSTANDARD LVCMOS18 [get_ports {heating}]
+set_property IOSTANDARD LVCMOS18 [get_ports {cooling}]
+set_property IOSTANDARD LVCMOS18 [get_ports {temperature[0]}]
+set_property IOSTANDARD LVCMOS18 [get_ports {temperature[1]}]
+set_property IOSTANDARD LVCMOS18 [get_ports {temperature[2]}]
+set_property IOSTANDARD LVCMOS18 [get_ports {temperature[3]}]
+set_property IOSTANDARD LVCMOS18 [get_ports {temperature[4]}]
+
+set_property PULLUP true [get_ports {rst_n}]

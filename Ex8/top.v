@@ -14,8 +14,12 @@
 
 
 module top(
+    input rst_n,
     input clk_p,
     input clk_n,
+    input wire [4:0] temperature,
+    output wire heating,
+    output wire cooling
      //Todo: add all other ports besides clk_n and clk_p 
    );
     
@@ -35,6 +39,13 @@ module top(
 	.I  (clk_ibufds),
 	.O  (clk)
       );
+
+    aircon ac (
+        .clk(clk),
+        .temperature(temperature),
+        .heating(heating),
+        .cooling(cooling)
+    );
 
 //Add logic here
 
